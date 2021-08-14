@@ -9,10 +9,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-          
+
       - name: Setup
         run: npm ci
-        
+
       - name: Test
         run: |
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
