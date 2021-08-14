@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { WelcomeComponent } from './welcome.component';
-import {UserService} from '../services/user.service';
+import {UserService} from '../services/user/user.service';
 
 class MockUserService {
   isLoggedIn = true;
