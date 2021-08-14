@@ -7,6 +7,7 @@ import {ModalModule} from './modal/modal.module';
 import { HomeComponent } from './home/home.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import {FormsModule} from '@angular/forms';
+import {ButtonModule} from './button/button.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     FormsModule,
     ModalModule,
+    ButtonModule,
     AppRoutingModule,
   ],
   providers: [],
