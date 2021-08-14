@@ -43,12 +43,8 @@ describe('MasterService without Angular testing support', () => {
   });
 
   it('#getValue should return stubbed value from a spy', () => {
-    const valueServiceSpy = jasmine.createSpyObj('ValueService', ['getValue']);
-
-    const stubValue = 'stub value';
-    valueServiceSpy.getValue.and.returnValue(stubValue);
-
-    masterService = new MasterService(valueServiceSpy);
+    // tslint:disable-next-line:no-shadowed-variable
+    const { masterService, stubValue, valueServiceSpy } = setup();
 
     expect(masterService.getValue())
       .toBe(stubValue, 'service returned stub value');
@@ -57,4 +53,15 @@ describe('MasterService without Angular testing support', () => {
     expect(valueServiceSpy.getValue.calls.mostRecent().returnValue)
       .toBe(stubValue);
   });
+
+  function setup(): { stubValue: string; valueServiceSpy: any; masterService: MasterService } {
+    const valueServiceSpy = jasmine.createSpyObj('ValueService', ['getValue']);
+    const stubValue = 'stub value';
+    // tslint:disable-next-line:no-shadowed-variable
+    const masterService = new MasterService(valueServiceSpy);
+
+    valueServiceSpy.getValue.and.returnValue(stubValue);
+    return { masterService, stubValue, valueServiceSpy };
+  }
 });
+
